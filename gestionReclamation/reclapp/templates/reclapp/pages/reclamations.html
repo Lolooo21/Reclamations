@@ -1,0 +1,31 @@
+{% extends 'reclapp/layouts/main.html' %} {% block content %}
+<div style="display: flex; justify-content: space-between; align-items: start">
+  <h3>Réclamations</h3>
+  {% if perms.reclapp.add_reclamation %}
+  <a href="{% url 'create-reclamation' %}" role="button"
+    >Créer une réclamation</a
+  >
+  {% endif %}
+</div>
+{% for reclamation in reclamations %}
+<div style="display: flex; justify-content: space-between; align-items: start">
+  <small
+    ><a href="{% url 'reclamation' reclamation.id %}">{{reclamation.id}}</a> -
+    {{reclamation.description}}</small
+  >
+  {% if perms.reclapp.change_reclamation %}
+  <a href="{% url 'update-reclamation' reclamation.id %}"
+    >Modifier réclamation</a
+  >
+  {% endif %}
+</div>
+<br />
+<div style="display: flex; justify-content: space-between; align-items: start">
+  <small></small>
+  {% if perms.reclapp.delete_reclamation %}
+  <a href="{% url 'delete-reclamation' reclamation.id %}" style="color: red"
+    >Supprimer réclamation</a
+  >{% endif %}
+</div>
+<hr style="margin: 10px 0" />
+{% endfor %} {% endblock content %}

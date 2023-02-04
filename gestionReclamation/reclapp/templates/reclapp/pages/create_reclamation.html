@@ -1,0 +1,17 @@
+{% extends 'reclapp/layouts/main.html' %}
+{% block content %}
+{% if type == "create" %}
+<h1>Créer une réclamation</h1>
+{% else %}
+<h1>Modifier une réclamation</h1>
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">
+        {% if type == "create" %}Créer{% else %}Modifier{% endif %}
+    </button>    
+</form>
+
+
+{% endblock content %}

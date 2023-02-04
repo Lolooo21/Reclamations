@@ -1,0 +1,14 @@
+{% extends 'reclapp/layouts/main.html' %}
+
+{% block content %}
+    <h1>Hello from Reclapp!</h1>
+    <p>L'app de vos réclamations !!</p>
+    {% comment %} {{request.user.username}} {% comment %} {%
+        permet de récupérer et afficher la personne connectée
+    %}{% endcomment %}
+    {% comment %}
+    {{request.user.is_authenticated}}
+    {% if request.user.is_authenticated %}
+    {{request.user.username}}
+    {% endif %}  {% endcomment %}
+{% endblock content %}

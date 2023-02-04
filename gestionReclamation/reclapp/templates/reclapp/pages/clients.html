@@ -1,0 +1,27 @@
+{% extends 'reclapp/layouts/main.html' %} {% block content %}
+<div style="display: flex; justify-content: space-between; align-items: start">
+  <h3>Clients</h3>
+  {% if perms.reclapp.add_client %}
+  <a href="{% url 'create-client' %}" role="button">Créer un client</a>
+  {% endif %}
+</div>
+{% for client in clients %}
+<div style="display: flex; justify-content: space-between; align-items: start">
+  <small
+    ><a href="{% url 'client' client.id %}">{{client.id}}</a> -
+    {{client.nom}}</small
+  >
+  {% if perms.reclapp.change_client %}
+  <a href="{% url 'update-client' client.id %}">Modifier client</a>
+  {% endif %}
+</div>
+<br />
+<div style="display: flex; justify-content: space-between; align-items: start">
+  <small></small>
+  {% if perms.reclapp.delete_client %}
+  <a href="{% url 'delete-client' client.id %}" style="color: red"
+    >Supprimer client</a
+  >{% endif %}
+</div>
+<hr style="margin: 10px 0" />
+{% endfor %} {% endblock content %}

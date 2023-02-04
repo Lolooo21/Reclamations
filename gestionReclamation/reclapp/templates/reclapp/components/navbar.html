@@ -1,0 +1,15 @@
+<nav style="border-bottom: 2px solid grey; padding-right: 20px; padding-left: 20px">
+    <ul>
+      <li><strong>Reclapp</strong></li>
+    </ul>
+    <ul>
+        <small style='margin-right: 20px'>Bienvenue,</small>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'reclamations' %}">Réclamations</a></li>
+        <li><a href="{% url 'entreprises' %}">Entreprises</a></li>
+       {% comment %}  <li><a href="{% url 'logout' %}">Logout</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li> {% endcomment %}
+        <li><a href="{% url 'clients' %}">Clients</a></li>
+        <li><a href="#" id="color-mode" onclick="toggleColorMode()">☀️</a></li>
+    </ul>
+  </nav>

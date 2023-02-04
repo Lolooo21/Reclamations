@@ -1,0 +1,27 @@
+{% extends 'reclapp/layouts/main.html' %} {% block content %}
+<div style="display: flex; justify-content: space-between; align-items: start">
+  <h3>Entreprises</h3>
+  {% if perms.reclapp.add_entreprise %}
+    <a href="{% url 'create-entreprise' %}" role="button">Créer une entreprise</a>
+  {% endif %}
+</div>
+{% for entreprise in entreprises %}
+<div style="display: flex; justify-content: space-between; align-items: start">
+  <small
+    ><a href="{% url 'entreprise' entreprise.id %}">{{entreprise.id}}</a> -
+    {{entreprise.nom}}</small
+  >
+  {% if perms.reclapp.change_entreprise %}
+  <a href="{% url 'update-entreprise' entreprise.id %}">Modifier une entreprise</a>
+  {% endif %}
+</div>
+<br />
+<div style="display: flex; justify-content: space-between; align-items: start">
+  <small></small>
+  {% if perms.reclapp.delete_entreprise %}
+  <a href="{% url 'delete-entreprise' entreprise.id %}" style="color: red"
+    >Supprimer une entreprise</a
+  >{% endif %}
+</div>
+<hr style="margin: 10px 0" />
+{% endfor %} {% endblock content %}
